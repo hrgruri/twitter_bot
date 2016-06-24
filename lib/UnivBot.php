@@ -34,13 +34,13 @@ class UnivBot
         $events = $this->getBachelorEvents($date['year'], $date['month'], $date['day']);
         foreach ($events as $event) {
             $this->tweet(
-                "学部生へ. 今日({$event->year}-{$event->month}-{$event->day})は｢{$event->title}｣です."
+                "学部生の皆様へ. 今日は｢{$event->title}｣です."
             );
         }
         $events = $this->getMasterEvents($date['year'], $date['month'], $date['day']);
         foreach ($events as $event) {
             $this->tweet(
-                "院生へ. 今日({$event->year}-{$event->month}-{$event->day})は｢{$event->title}｣です."
+                "院生の皆様へ. 今日は｢{$event->title}｣です."
             );
         }
     }
@@ -55,13 +55,13 @@ class UnivBot
         $events = $this->getBachelorEvents($date['year'], $date['month'], $date['day']);
         foreach ($events as $event) {
             $this->tweet(
-                "学部生へ. 明日({$event->year}-{$event->month}-{$event->day})は｢{$event->title}｣です."
+                "学部生の皆様へ. 明日は｢{$event->title}｣です."
             );
         }
         $events = $this->getMasterEvents($date['year'], $date['month'], $date['day']);
         foreach ($events as $event) {
             $this->tweet(
-                "院生へ. 明日({$event->year}-{$event->month}-{$event->day})は｢{$event->title}｣です."
+                "院生の皆様へ. 明日は｢{$event->title}｣です."
             );
         }
     }
@@ -118,6 +118,7 @@ class UnivBot
                 $key->oauth_token_secret ?? ''
             );
         }
+        $text .= ' ('.date("Y-m-d H:i").')';
         self::$conn->post("statuses/update", array("status" => $text));
         // print "tweet:\n{$text}\n\n";
     }
