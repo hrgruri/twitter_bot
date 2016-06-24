@@ -1,0 +1,12 @@
+{
+    "require": {
+        "php": ">=7.0",
+        "abraham/twitteroauth": "^0.6.4",
+        "hrgruri/ritsucal": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "hrgruri\\bot\\": "lib/"
+        }
+    }
+}
