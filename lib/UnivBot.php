@@ -15,7 +15,7 @@ class UnivBot
         $this->config = \hrgruri\bot\Config::getInstance();
         $this->file   = __DIR__.'/../data/calendar.json';
         if (!file_exists($this->file)) {
-            $client = new Hrgruri\Ritsucal\Client();
+            $client = new \Hrgruri\Ritsucal\Client();
             $calenders = $client->getCalenders();
             file_put_contents(
                 $this->file,
