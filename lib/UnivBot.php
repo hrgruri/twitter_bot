@@ -118,8 +118,7 @@ class UnivBot
                 $key->oauth_token_secret ?? ''
             );
         }
-        $text .= ' ('.date("Y-m-d H:i").')';
+        $text .= ' ('.date("Y-m-d H:i").') http://www.ritsumei.ac.jp/profile/info/calender/';
         self::$conn->post("statuses/update", array("status" => $text));
-        // print "tweet:\n{$text}\n\n";
     }
 }
