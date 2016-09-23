@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+    colors="true"
+    bootstrap="bootstrap/autoload.php"
+    backupGlobals="false">
+
+    <testsuite name="twitetr_bot tests">
+        <directory>tests/</directory>
+    </testsuite>
+</phpunit>

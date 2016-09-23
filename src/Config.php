@@ -1,11 +1,12 @@
 <?php
-namespace hrgruri\bot;
+namespace Hrgruri\Bot;
 
 class Config
 {
     const CONFIG_FILE_PATH = '../data/config.json';
     private static $instance;
     private $data;
+    
     private function __construct()
     {
         $this->load();
