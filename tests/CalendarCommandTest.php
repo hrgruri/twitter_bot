@@ -11,17 +11,10 @@ class CalendarCommandTest extends TestCase
         $this->assertTrue(mb_strlen($text) < mb_strlen($result));
     }
 
-    public function testTweet()
+    public function testGetEvents()
     {
-        $faker      = $this->faker();
         $instance   = new CalendarCommand();
-        $text = "test tweet ". date("Y-m-d H:i:s");
-        $this->assertTrue($this->callMethod($instance, "tweet", [$text]));
-        while(true) {
-            if (strlen($text = $faker->realText(200)) > 140) {
-                break;
-            }
-        }
-        $this->assertFalse($this->callMethod($instance, "tweet", [$text]));
+        $result = $this->callMethod($instance, 'getEvents', ['bachelor', '2016-4-1']);
+        $this->assertInternalType('array', $result);
     }
 }
