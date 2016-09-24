@@ -72,13 +72,23 @@ class CalendarCommand extends Command
      * @param  string $date yyyy-mm-dd
      * @return array
      */
-    private function getEvents(string $type, string $date)
+    private function getEvents(string $type, string $date) : array
     {
         $client = new \GuzzleHttp\Client();
-        $res = $client->request('GET', "https://ritsucal.hrgruri.com/api/{$type}/search", [
-            'query' => ['date' => $date]
-        ]);
-        return json_decode($res->getBody())->events;
+        $result = [];
+        try {
+            $res = $client->request('GET', "https://ritsucal.hrgruri.com/api/{$type}/search", [
+                'query' => ['date' => $date]
+            ]);
+            $data = json_decode($res->getBody());
+            if ($data->status != true) {
+                throw new \Exception("cannot get events");
+            }
+            $result = $data->events;
+        } catch (\Exception $e) {
+            self::$log->critical($e->getMessage());
+        }
+        return  $result;
     }
 
     /**
@@ -88,7 +98,7 @@ class CalendarCommand extends Command
      * @param  string $text
      * @return string
      */
-    private function appendInfo(string $text)
+    private function appendInfo(string $text) : string
     {
         return $text. ' ('.date("Y-m-d H:i").') http://www.ritsumei.ac.jp/profile/info/calender/';
     }
