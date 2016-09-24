@@ -13,7 +13,7 @@ abstract class Command extends \Symfony\Component\Console\Command\Command
     public function __construct()
     {
         parent::__construct();
-        self::$config   = \Hrgruri\Bot\config::getInstance();
+        self::$config   = \Hrgruri\Bot\Config::getInstance();
         self::$log      = new Logger('bot_log');
         self::$log->pushHandler(new StreamHandler(__DIR__.'/../../data/bot.log', Logger::DEBUG));
     }
