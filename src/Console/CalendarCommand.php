@@ -35,7 +35,7 @@ class CalendarCommand extends Command
                 $date = date('Y-m-d');
                 $when = "今日";
             } elseif ($input->getOption('tomorrow')) {
-                $date = date('Y-m-d', strtotime("+ 7 day"));
+                $date = date('Y-m-d', strtotime("+ 1 day"));
                 $when = "明日";
             } else {
                 throw new \Exception("UNDEFINED OPTION");
