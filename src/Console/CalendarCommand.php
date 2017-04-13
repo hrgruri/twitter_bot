@@ -81,8 +81,8 @@ class CalendarCommand extends Command
                 'query' => ['date' => $date]
             ]);
             $data = json_decode($res->getBody());
-            if ($data->status != true) {
-                throw new \Exception("cannot get events");
+            if ($res->getStatusCode() !== 200) {
+                throw new \Exception("status is not 200");
             }
             $result = $data->events;
         } catch (\Exception $e) {
