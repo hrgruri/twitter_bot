@@ -80,10 +80,10 @@ class CalendarCommand extends Command
             $res = $client->request('GET', "https://ritsucal.hrgruri.com/api/{$type}/search", [
                 'query' => ['date' => $date]
             ]);
-            $data = json_decode($res->getBody());
             if ($res->getStatusCode() !== 200) {
                 throw new \Exception("status is not 200");
             }
+            $data = json_decode($res->getBody());
             $result = $data->events;
         } catch (\Exception $e) {
             self::$log->critical($e->getMessage());
